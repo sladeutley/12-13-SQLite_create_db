@@ -22,5 +22,25 @@ employeesArray.forEach(
 );
 
 // how to enter data into table not from a js file
-db.run('INSERT INTO employees VALUES (null, "Stephen", "Stephonius", "farmer4", "333 some place", "green beans")');
+db.run(
+  'INSERT INTO employees VALUES (null, "Stephen", "Stephonius", "farmer4", "333 some place", "green beans")'
+);
 
+db.all("SELECT * FROM employees", (err, allEmployees) => {
+  if (err) return reject(err);
+  console.log("allEmployees", allEmployees);
+});
+
+db.all("SELECT * FROM employees", (err, allEmployees) => {
+  if (err) return reject(err);
+  allEmployees.forEach(employee => {
+    console.log("jobTitle: ", employee.jobTitle);
+  });
+});
+
+db.all("SELECT * FROM employees", (err, allEmployees) => {
+  if (err) return reject(err);
+  allEmployees.forEach(employee => {
+    console.log("first name: " , employee.firstName, "last name: ", employee.lastName, "address: ", employee.address);
+  });
+});
